@@ -1,14 +1,31 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Photo Album
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+ <div>
+  <ion-list>
+      <div ion-item *ngFor= "let image of images">
+       
+        <ion-card>
+            <img src={{image.imageUrl}}/>
+            <ion-card-content>
+              <ion-card-title>
+                {{image.name}}
+                </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+      </div>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="more($event)" threshold="50">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</div>
 </ion-content>
